@@ -1,5 +1,7 @@
 package xunit;
 
+import xunit.annotation.MyTest;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +11,7 @@ public class TestSuite implements Test {
 
     public TestSuite(Class<? extends Test> testClass) {
         Arrays.stream(testClass.getMethods())
-                .filter(m -> m.getName().startsWith("test"))
+                .filter(m -> m.getAnnotation(MyTest.class) != null)
                 .forEach(m ->
                         {
                             try {
