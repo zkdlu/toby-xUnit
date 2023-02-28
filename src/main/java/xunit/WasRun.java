@@ -1,14 +1,16 @@
 package xunit;
 
 public class WasRun extends TestCase {
-    public boolean wasRun;
-    public boolean wasSetUp;
     public String log;
 
     @Override
     public void setUp() {
-        this.wasSetUp = true;
         this.log = "setUp";
+    }
+
+    @Override
+    public void tearDown() {
+        this.log += " tearDown";
     }
 
     public WasRun(String name) {
@@ -16,7 +18,6 @@ public class WasRun extends TestCase {
     }
 
     public void testMethod() {
-        wasRun = true;
         log += " testMethod";
     }
 }
